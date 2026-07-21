@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Poista reitti{% endblock %}
+
+{% block content %}
+<h2>Poista reitti</h2>
+
+<form action="/remove_route/{{ route.id }}" method="post">
+  <p>Haluatko varmasti poistaa reitin <strong>{{ route.name }}</strong>?</p>
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" name="remove" value="Poista" />
+  <input type="submit" name="cancel" value="Peruuta" />
+</form>
+{% endblock %}
+

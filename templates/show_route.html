@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ route.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ route.name }}</h2>
+
+<dl>
+  <dt>Alue</dt>
+  <dd>{{ route.area }}</dd>
+
+  <dt>Lähtöpaikka</dt>
+  <dd>{{ route.start_point }}</dd>
+
+  <dt>Pituus</dt>
+  <dd>{{ route.length_km }} km</dd>
+
+  <dt>Lisännyt</dt>
+  <dd>{{ route.username }}</dd>
+</dl>
+
+<h3>Reitin kuvaus</h3>
+<p>{{ route.description | show_lines }}</p>
+
+{% if route.user_id == session.user_id %}
+<p>
+  <a href="/edit_route/{{ route.id }}">Muokkaa reittiä</a> |
+  <a href="/remove_route/{{ route.id }}">Poista reitti</a>
+</p>
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}Hae reittejä{% endblock %}
+
+{% block content %}
+<h2>Hae reittejä</h2>
+
+<form action="/find_route" method="get">
+  <p>
+    <label for="query">Reitin nimi tai alue</label><br />
+    <input id="query" type="text" name="query" value="{{ query }}" maxlength="100" />
+  </p>
+  <input type="submit" value="Hae" />
+</form>
+
+{% if query %}
+<h3>Hakutulokset</h3>
+
+{% if results %}
+<ul class="route-list">
+  {% for route in results %}
+  <li>
+    <h3><a href="/route/{{ route.id }}">{{ route.name }}</a></h3>
+    <p>{{ route.area }} · {{ route.length_km }} km</p>
+    <p>Lisännyt {{ route.username }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Hakusanalla ei löytynyt reittejä.</p>
+{% endif %}
+{% endif %}
+{% endblock %}
+

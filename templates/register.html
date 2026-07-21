@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Luo tunnus{% endblock %}
+
+{% block content %}
+<h2>Luo tunnus</h2>
+
+<form action="/register" method="post">
+  <p>
+    <label for="username">Käyttäjätunnus</label><br />
+    <input id="username" type="text" name="username"
+           value="{{ filled.username }}" minlength="3" maxlength="16" required />
+  </p>
+  <p>
+    <label for="password1">Salasana</label><br />
+    <input id="password1" type="password" name="password1"
+           minlength="8" maxlength="100" required />
+  </p>
+  <p>
+    <label for="password2">Salasana uudestaan</label><br />
+    <input id="password2" type="password" name="password2"
+           minlength="8" maxlength="100" required />
+  </p>
+  <input type="submit" value="Luo tunnus" />
+</form>
+{% endblock %}
+

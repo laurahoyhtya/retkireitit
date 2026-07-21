@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Muokkaa reittiä{% endblock %}
+
+{% block content %}
+<h2>Muokkaa reittiä</h2>
+
+<form action="/update_route" method="post">
+  <p>
+    <label for="name">Reitin nimi</label><br />
+    <input id="name" type="text" name="name" value="{{ filled.name }}"
+           maxlength="100" required />
+  </p>
+  <p>
+    <label for="area">Alue</label><br />
+    <input id="area" type="text" name="area" value="{{ filled.area }}"
+           maxlength="100" required />
+  </p>
+  <p>
+    <label for="start_point">Lähtöpaikka</label><br />
+    <input id="start_point" type="text" name="start_point"
+           value="{{ filled.start_point }}" maxlength="100" required />
+  </p>
+  <p>
+    <label for="length_km">Pituus kilometreinä</label><br />
+    <input id="length_km" type="number" name="length_km"
+           value="{{ filled.length_km }}" min="0.1" max="1000" step="0.1" required />
+  </p>
+  <p>
+    <label for="description">Reitin kuvaus</label><br />
+    <textarea id="description" name="description" rows="8" cols="50"
+              maxlength="5000" required>{{ filled.description }}</textarea>
+  </p>
+  <input type="hidden" name="route_id" value="{{ route_id }}" />
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" value="Tallenna muutokset" />
+</form>
+{% endblock %}
+

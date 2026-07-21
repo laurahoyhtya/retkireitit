@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Etusivu{% endblock %}
+
+{% block content %}
+<h2>Uusimmat reitit</h2>
+
+{% if routes %}
+<ul class="route-list">
+  {% for route in routes %}
+  <li>
+    <h3><a href="/route/{{ route.id }}">{{ route.name }}</a></h3>
+    <p>{{ route.area }} · {{ route.length_km }} km</p>
+    <p>Lisännyt {{ route.username }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Reittejä ei ole vielä lisätty.</p>
+{% endif %}
+{% endblock %}
+
