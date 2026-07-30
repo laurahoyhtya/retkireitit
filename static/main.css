@@ -83,6 +83,7 @@ dd {
 input[type="text"],
 input[type="password"],
 input[type="number"],
+select,
 textarea {
   box-sizing: border-box;
   width: 100%;
@@ -119,3 +120,13 @@ input[type="submit"] {
   text-decoration: underline;
 }
 
+.report {
+  padding: 0.8em 1em;
+  margin: 0.8em 0;
+  border-left: 0.3em solid #527864;
+  background-color: #f2f6f3;
+}
+
+.report p {
+  margin: 0.3em 0;
+}

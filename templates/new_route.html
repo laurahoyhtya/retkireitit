@@ -31,8 +31,22 @@
     <textarea id="description" name="description" rows="8" cols="50"
               maxlength="5000" required>{{ filled.description }}</textarea>
   </p>
+  {% for class_title, options in classes.items() %}
+  <p>
+    <label for="class{{ loop.index }}">{{ class_title }}</label><br />
+    <select id="class{{ loop.index }}" name="classes" required>
+      <option value="">Valitse</option>
+      {% for option in options %}
+      {% if option.id in selected_class_ids %}
+      <option value="{{ option.id }}" selected>{{ option.value }}</option>
+      {% else %}
+      <option value="{{ option.id }}">{{ option.value }}</option>
+      {% endif %}
+      {% endfor %}
+    </select>
+  </p>
+  {% endfor %}
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" value="Lisää reitti" />
 </form>
 {% endblock %}
-

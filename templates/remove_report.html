@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Poista retkiraportti{% endblock %}
+
+{% block content %}
+<h2>Poista retkiraportti</h2>
+
+<form action="/remove_report/{{ report.id }}" method="post">
+  <p>
+    Haluatko varmasti poistaa reitille
+    <strong>{{ report.route_name }}</strong> lisäämäsi retkiraportin?
+  </p>
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
+  <input type="submit" name="remove" value="Poista" />
+  <input type="submit" name="cancel" value="Peruuta" />
+</form>
+{% endblock %}

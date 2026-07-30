@@ -14,3 +14,25 @@ CREATE TABLE routes (
     user_id INTEGER REFERENCES users
 );
 
+CREATE TABLE classes (
+    id INTEGER PRIMARY KEY,
+    title TEXT,
+    value TEXT,
+    UNIQUE (title, value)
+);
+
+CREATE TABLE route_classes (
+    id INTEGER PRIMARY KEY,
+    route_id INTEGER REFERENCES routes,
+    class_id INTEGER REFERENCES classes,
+    UNIQUE (route_id, class_id)
+);
+
+CREATE TABLE trip_reports (
+    id INTEGER PRIMARY KEY,
+    route_id INTEGER REFERENCES routes,
+    user_id INTEGER REFERENCES users,
+    rating INTEGER,
+    trail_condition TEXT,
+    content TEXT
+);

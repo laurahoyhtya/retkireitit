@@ -22,7 +22,10 @@
   <li>
     <h3><a href="/route/{{ route.id }}">{{ route.name }}</a></h3>
     <p>{{ route.area }} · {{ route.length_km }} km</p>
-    <p>Lisännyt {{ route.username }}</p>
+    <p>
+      Lisännyt
+      <a href="/user/{{ route.user_id }}">{{ route.username }}</a>
+    </p>
   </li>
   {% endfor %}
 </ul>
@@ -31,4 +34,3 @@
 {% endif %}
 {% endif %}
 {% endblock %}
-

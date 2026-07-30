@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Käyttäjä {{ user.username }}{% endblock %}
+
+{% block content %}
+<h2>Käyttäjä {{ user.username }}</h2>
+
+<p>
+  Käyttäjä on lisännyt {{ user.route_count }} reittiä ja
+  {{ user.report_count }} retkiraporttia.
+</p>
+
+<h3>Lisätyt reitit</h3>
+
+{% if routes %}
+<ul class="route-list">
+  {% for route in routes %}
+  <li>
+    <h4><a href="/route/{{ route.id }}">{{ route.name }}</a></h4>
+    <p>{{ route.area }} · {{ route.length_km }} km</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Käyttäjä ei ole lisännyt reittejä.</p>
+{% endif %}
+
+<h3>Lisätyt retkiraportit</h3>
+
+{% if reports %}
+{% for report in reports %}
+<article class="report">
+  <p>
+    <a href="/route/{{ report.route_id }}#reports">
+      {{ report.route_name }}
+    </a>:
+    <strong>{{ report.rating }}/5 · {{ report.trail_condition }}</strong>
+  </p>
+  <p>{{ report.content | show_lines }}</p>
+</article>
+{% endfor %}
+{% else %}
+<p>Käyttäjä ei ole lisännyt retkiraportteja.</p>
+{% endif %}
+{% endblock %}

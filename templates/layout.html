@@ -19,7 +19,10 @@
       <li><a href="/find_route">Haku</a></li>
       {% if session.user_id %}
       <li><a href="/new_route">Lisää reitti</a></li>
-      <li>Kirjautunut: {{ session.username }}</li>
+      <li>
+        Kirjautunut:
+        <a href="/user/{{ session.user_id }}">{{ session.username }}</a>
+      </li>
       <li>
         <form action="/logout" method="post" class="inline-form">
           <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
@@ -43,4 +46,3 @@
 </body>
 
 </html>
-
